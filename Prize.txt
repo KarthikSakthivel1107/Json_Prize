@@ -1,0 +1,25 @@
+1. DECLARE @json_data() = 
+'{"Category"
+       "Laureates":["Id","First name"]}'
+SELECT JSON_QUERY(@json_data,'$.First name') as Name
+
+2.SELECT TOP 1 JSON_QUERY(Prize winners) AS winners, 
+JSON_QUERY(CONCAT('["Id","', Category, '","', "First name", sur name, '"]')) Prize
+FROM @json_data.winners;
+
+3.[
+    {
+        "Category": "chemistry",
+        "Year": "2021"
+    },
+    {
+        "Category": "Economics",
+        "Year": "2021"
+    }
+]
+4.SELECT id,
+       jdoc -> '$.Year[*].Category'
+FROM Prize
+WHERE id = 1003
+  AND jdoc -> '$.Category[*].Year' <= 1900
+  AND jdoc -> '$.Category[*].Year' >= 2018;
